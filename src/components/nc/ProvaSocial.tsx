@@ -40,7 +40,7 @@ export function ProvaSocial() {
 
       <div className="mt-10 rounded-2xl border border-border surface-brand p-8 text-center">
         <h3 className="text-2xl text-brand-foreground sm:text-3xl">
-          Manda o seu pedido e <span className="text-lime">responde a gente com prazo e valor</span>
+          Manda o que você precisa e <span className="text-lime">a gente volta com prazo e valor</span>
         </h3>
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
