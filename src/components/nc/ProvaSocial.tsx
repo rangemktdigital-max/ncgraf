@@ -2,7 +2,7 @@ import { Star, Instagram, MessageCircle } from "lucide-react";
 import { wa, NC } from "@/lib/nc";
 import kitAsset from "@/assets/20251204_153548.jpg.asset.json";
 import agendaAsset from "@/assets/20251204_184340.jpg.asset.json";
-import balcaoAsset from "@/assets/20251204_191457.jpg.asset.json";
+import balcaoAsset from "@/assets/20251204_191454.jpg.asset.json";
 
 const galeria = [
   { src: kitAsset.url, alt: "Kit presente personalizado em sacola transparente" },
