@@ -74,9 +74,7 @@ export function ProvaSocial() {
         Ver todas as avaliações no Google
       </a>
 
-      <p className="mt-12 max-w-2xl text-muted-foreground">
-        Alguns pedidos que saíram daqui da loja:
-      </p>
+      <p className="mt-12 max-w-2xl text-muted-foreground">Alguns pedidos que saíram daqui:</p>
 
       <div className="mt-5 grid gap-5 sm:grid-cols-3">
         {galeria.map((g) => (
