@@ -20,7 +20,7 @@ export function Hero() {
       />
 
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
-        <span className="eyebrow">Ilhéus · Itabuna · Bahia</span>
+        <span className="eyebrow">Ilhéus - itabuna e região</span>
 
         <h1 className="mt-5 font-display text-[2.6rem] leading-[0.98] text-brand-foreground sm:text-6xl">
           IMPRESSÃO COM PRAZO
@@ -36,21 +36,13 @@ export function Hero() {
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <a
-            href={wa("Olá, quero um orçamento")}
+            href={wa("Olá, quero solicitar um orçamento")}
             target="_blank"
             rel="noopener"
             className="btn-lime text-base"
           >
             <WhatsAppIcon className="size-5" aria-hidden="true" />
-            Fale Conosco
-          </a>
-          <a
-            href={wa("Olá, vim pelo hero do site e quero solicitar um orçamento")}
-            target="_blank"
-            rel="noopener"
-            className="btn-ghost-lime text-base"
-          >
-            Solicite um Orçamento
+            Solicite orçamento
           </a>
         </div>
 
