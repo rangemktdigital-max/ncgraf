@@ -12,6 +12,9 @@ export const NC = {
   instagram: "https://instagram.com/nccopiadora",
   cnpj: "96.859.046/0001-30",
   maps: "https://www.google.com/maps/search/?api=1&query=Rua+Visconde+de+Ouro+Preto+53+Centro+Ilheus+BA",
+  google: "https://share.google/qxv5sA19Osi9YG9Am",
+  googleNota: "4,5",
+  googleAvaliacoes: 51,
   mapsEmbed:
     "https://www.google.com/maps?q=Rua%20Visconde%20de%20Ouro%20Preto%2053%2C%20Centro%2C%20Ilh%C3%A9us%20-%20BA&output=embed",
 };
