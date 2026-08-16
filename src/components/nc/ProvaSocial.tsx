@@ -1,4 +1,5 @@
-import { Star, Instagram, MessageCircle } from "lucide-react";
+import { Star, Instagram } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import { wa, NC } from "@/lib/nc";
 import kitAsset from "@/assets/20251204_153548.jpg.asset.json";
 import agendaAsset from "@/assets/20251204_184340.jpg.asset.json";
@@ -49,7 +50,7 @@ export function ProvaSocial() {
             rel="noopener"
             className="btn-lime"
           >
-            <MessageCircle className="size-5" aria-hidden="true" />
+            <WhatsAppIcon className="size-5" aria-hidden="true" />
             Falar no WhatsApp
           </a>
           <a

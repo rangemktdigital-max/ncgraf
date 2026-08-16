@@ -1,5 +1,6 @@
-import { MessageCircle, Instagram, MapPin, Clock } from "lucide-react";
+import { Instagram, MapPin, Clock } from "lucide-react";
 import { Logo } from "./Logo";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import { wa, NC, WHATSAPP_NUMBER } from "@/lib/nc";
 
 export function Footer() {
@@ -22,7 +23,7 @@ export function Footer() {
             rel="noopener"
             className="mt-3 flex items-center gap-2 font-bold text-lime"
           >
-            <MessageCircle className="size-4" aria-hidden="true" />
+            <WhatsAppIcon className="size-4" aria-hidden="true" />
             (73) 3634-7138 · WhatsApp
           </a>
           <a
