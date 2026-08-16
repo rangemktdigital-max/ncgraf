@@ -56,7 +56,7 @@ export function Produtos() {
       </h2>
       <p className="mt-3 max-w-2xl text-muted-foreground">
         Cartão de visita, banner de evento, etiqueta de escola, kit de premiação. Se dá pra
-        imprimir ou personalizar, provavelmente a gente faz. Produção é aqui mesmo na loja, e você
+        imprimir ou personalizar, provavelmente a gente faz. Produção é aqui mesmo e você
         retira no Centro ou combina a entrega em Ilhéus e Itabuna.
       </p>
 
