@@ -1,4 +1,5 @@
-import { MapPin, Clock, MessageCircle } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import lojaAsset from "@/assets/20251204_191515.jpg.asset.json";
 import { wa, NC } from "@/lib/nc";
 
@@ -46,7 +47,7 @@ export function Localizacao() {
                   rel="noopener"
                   className="btn-lime !py-2.5 text-sm"
                 >
-                  <MessageCircle className="size-4" aria-hidden="true" />
+                  <WhatsAppIcon className="size-4" aria-hidden="true" />
                   Chamar no WhatsApp
                 </a>
                 <a

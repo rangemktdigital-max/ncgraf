@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import { wa } from "@/lib/nc";
 
 const passos = [
@@ -32,7 +32,7 @@ export function ComoComprar() {
         rel="noopener"
         className="btn-lime mt-10"
       >
-        <MessageCircle className="size-5" aria-hidden="true" />
+        <WhatsAppIcon className="size-5" aria-hidden="true" />
         Começar meu pedido
       </a>
     </section>

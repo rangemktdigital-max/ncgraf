@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import { wa } from "@/lib/nc";
 
 const links = [
@@ -34,7 +35,7 @@ export function Header() {
             rel="noopener"
             className="btn-lime !px-5 !py-2 text-sm"
           >
-            <MessageCircle className="size-4" aria-hidden="true" />
+            <WhatsAppIcon className="size-4" aria-hidden="true" />
             WhatsApp
           </a>
         </nav>
@@ -47,7 +48,7 @@ export function Header() {
             aria-label="Falar no WhatsApp"
             className="grid size-10 place-items-center rounded-full bg-lime text-lime-foreground"
           >
-            <MessageCircle className="size-5" aria-hidden="true" />
+            <WhatsAppIcon className="size-5" aria-hidden="true" />
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
