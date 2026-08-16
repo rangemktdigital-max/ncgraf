@@ -1,4 +1,5 @@
-import { MessageCircle, Timer, CreditCard } from "lucide-react";
+import { Timer, CreditCard } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import { wa } from "@/lib/nc";
 
 const itens = [
@@ -50,7 +51,7 @@ export function Diferenciais() {
             rel="noopener"
             className="btn-lime"
           >
-            <MessageCircle className="size-5" aria-hidden="true" />
+            <WhatsAppIcon className="size-5" aria-hidden="true" />
             Falar com um atendente
           </a>
         </div>

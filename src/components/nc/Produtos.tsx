@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import { wa } from "@/lib/nc";
 
 import cartoes from "@/assets/prod-cartoes.jpg";
@@ -104,7 +104,7 @@ export function Produtos() {
                 rel="noopener"
                 className="mt-4 inline-flex items-center gap-2 font-display font-bold text-brand transition-colors hover:text-accent-foreground"
               >
-                <MessageCircle className="size-4 text-lime" aria-hidden="true" />
+                <WhatsAppIcon className="size-4 text-lime" aria-hidden="true" />
                 Pedir orçamento
               </a>
             </div>

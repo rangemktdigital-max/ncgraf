@@ -1,4 +1,5 @@
-import { MessageCircle, MapPin, Clock, CreditCard } from "lucide-react";
+import { MapPin, Clock, CreditCard } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import heroAsset from "@/assets/20251204_191350.jpg.asset.json";
 import { wa } from "@/lib/nc";
 
@@ -40,7 +41,7 @@ export function Hero() {
             rel="noopener"
             className="btn-lime text-base"
           >
-            <MessageCircle className="size-5" aria-hidden="true" />
+            <WhatsAppIcon className="size-5" aria-hidden="true" />
             Fale Conosco
           </a>
           <a
