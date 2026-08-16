@@ -11,7 +11,7 @@ import { WhatsAppFab } from "@/components/nc/WhatsAppFab";
 
 const title = "NC Copiadora | Gráfica Rápida em Ilhéus e Itabuna/BA";
 const description =
-  "Gráfica rápida em Ilhéus/BA: cartões de visita, adesivos, banners, brindes, troféus e papelaria personalizada. Orçamento no WhatsApp e cartão em até 3x sem juros.";
+  "Gráfica rápida no Centro de Ilhéus: cartão de visita, adesivo, banner, brinde, troféu e papelaria personalizada. Peça o orçamento no WhatsApp. Cartão em até 3x sem juros.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

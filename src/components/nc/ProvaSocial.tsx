@@ -14,14 +14,14 @@ export function ProvaSocial() {
   return (
     <section id="contato" className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
       <span className="eyebrow">
-        <Star className="size-3.5 fill-current" aria-hidden="true" />O que nossos clientes dizem
+        <Star className="size-3.5 fill-current" aria-hidden="true" />Nossos trabalhos
       </span>
       <h2 className="mt-4 max-w-2xl text-3xl sm:text-5xl">
-        Marcas de Ilhéus e Itabuna que já <span className="text-brand">imprimem com a gente</span>
+        Quem já <span className="text-brand">imprime com a gente</span>
       </h2>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        Mais de 3.300 pessoas acompanham nossos trabalhos no Instagram. Veja alguns pedidos reais
-        que saíram da nossa produção.
+        São mais de 3.300 pessoas acompanhando a NC no Instagram. Abaixo, alguns pedidos que
+        saíram daqui da loja.
       </p>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-3">
@@ -40,7 +40,7 @@ export function ProvaSocial() {
 
       <div className="mt-10 rounded-2xl border border-border surface-brand p-8 text-center">
         <h3 className="text-2xl text-brand-foreground sm:text-3xl">
-          Peça hoje e receba <span className="text-lime">prazo e valor na hora</span>
+          Manda o seu pedido e <span className="text-lime">responde a gente com prazo e valor</span>
         </h3>
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a

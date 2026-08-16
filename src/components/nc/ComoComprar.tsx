@@ -2,10 +2,10 @@ import { MessageCircle } from "lucide-react";
 import { wa } from "@/lib/nc";
 
 const passos = [
-  { n: "01", t: "Chame no WhatsApp", d: "Conte o que precisa, a quantidade e a data de entrega." },
-  { n: "02", t: "Receba o orçamento", d: "Enviamos valor, prazo de produção e formas de pagamento." },
-  { n: "03", t: "Aprove a arte", d: "Você manda o arquivo ou a gente cria e envia para aprovação." },
-  { n: "04", t: "Retire ou receba", d: "Retirada na loja no Centro de Ilhéus ou entrega combinada." },
+  { n: "01", t: "Chame no WhatsApp", d: "Diz o que você precisa, quantas unidades e pra quando." },
+  { n: "02", t: "Receba o orçamento", d: "Mandamos valor, prazo de produção e como pagar." },
+  { n: "03", t: "Aprove a arte", d: "Você manda o arquivo pronto ou a gente cria e envia pra você conferir." },
+  { n: "04", t: "Retire ou receba", d: "Retira na loja, no Centro de Ilhéus, ou combina a entrega." },
 ];
 
 export function ComoComprar() {

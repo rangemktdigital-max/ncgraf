@@ -14,55 +14,55 @@ import brindesAsset from "@/assets/20251204_155010.jpg.asset.json";
 const produtos = [
   {
     titulo: "Cartões de Visita",
-    desc: "Papel premium, laminação fosca ou brilho e acabamento rápido.",
+    desc: "Papel bom, laminação fosca ou brilho. Sai rápido.",
     img: cartoes,
     lead: "cartões de visita",
   },
   {
     titulo: "Adesivos e Tags",
-    desc: "Adesivos recortados, rótulos, tags e folders para sua marca.",
+    desc: "Adesivo recortado, rótulo de embalagem, tag de produto e folder.",
     img: adesivos,
     lead: "adesivos, tags e folders",
   },
   {
     titulo: "Banners, Backdrops e Lonas",
-    desc: "Impressão em grande formato para eventos, lojas e fachadas.",
+    desc: "Grande formato para evento, fachada de loja e ponto de venda.",
     img: banners,
     lead: "banner, backdrop ou lona",
   },
   {
     titulo: "Brindes Personalizados",
-    desc: "Canecas, agendas, kits corporativos e sacolas com a sua marca.",
+    desc: "Caneca, agenda, sacola e kit corporativo com a sua marca.",
     img: brindesAsset.url,
     lead: "brindes personalizados",
   },
   {
     titulo: "Troféus e Medalhas",
-    desc: "Kits para corridas, campeonatos e premiações de eventos.",
+    desc: "Kit de premiação para corrida, campeonato e festival.",
     img: trofeus,
     lead: "troféus e medalhas",
   },
   {
     titulo: "Papelaria Personalizada",
-    desc: "Blocos, receituários, envelopes, pastas e papel timbrado.",
+    desc: "Bloco, receituário, envelope, pasta e papel timbrado.",
     img: papelaria,
     lead: "papelaria personalizada",
   },
   {
     titulo: "Etiqueta Escolar",
-    desc: "Kits de etiquetas com nome para material e uniforme escolar.",
+    desc: "Etiqueta com o nome da criança pro material e pro uniforme.",
     img: etiqueta,
     lead: "etiquetas escolares",
   },
   {
     titulo: "Fitas Personalizadas",
-    desc: "Fitas de cetim impressas para embalagens, lembranças e brindes.",
+    desc: "Fita de cetim impressa pra fechar embalagem e lembrança.",
     img: fitas,
     lead: "fitas personalizadas",
   },
   {
     titulo: "Datas Comemorativas",
-    desc: "Lembranças, caixas e decoração impressa para cada ocasião.",
+    desc: "Lembrancinha, caixa e decoração impressa pra festa e data especial.",
     img: datas,
     lead: "produtos para datas comemorativas",
   },
@@ -73,12 +73,12 @@ export function Produtos() {
     <section id="produtos" className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
       <span className="eyebrow">Catálogo</span>
       <h2 className="mt-4 max-w-2xl text-3xl sm:text-5xl">
-        Tudo que sua marca precisa imprimir,{" "}
-        <span className="text-brand">em um só lugar</span>
+        O que a gente <span className="text-brand">imprime</span>
       </h2>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        Do cartão de visita ao kit de premiação: produção própria, conferência de arte e retirada na
-        loja ou entrega em Ilhéus e Itabuna.
+        Cartão de visita, banner de evento, etiqueta de escola, kit de premiação. Se dá pra
+        imprimir ou personalizar, provavelmente a gente faz. Produção é aqui mesmo na loja, e você
+        retira no Centro ou combina a entrega em Ilhéus e Itabuna.
       </p>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
