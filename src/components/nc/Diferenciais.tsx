@@ -4,7 +4,7 @@ import { wa } from "@/lib/nc";
 
 const itens = [
   {
-    icon: MessageCircle,
+    icon: WhatsAppIcon,
     titulo: "Atendimento via WhatsApp",
     desc: "Manda a arte pronta ou só a ideia. A gente responde no horário da loja e resolve tudo por lá mesmo.",
   },
