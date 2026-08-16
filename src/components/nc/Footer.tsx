@@ -9,8 +9,8 @@ export function Footer() {
         <div>
           <Logo />
           <p className="mt-4 text-sm text-brand-foreground/75">
-            Gráfica rápida em Ilhéus/BA. Especialistas em desenvolvimento gráfico e apaixonados por
-            impressos.
+            Gráfica rápida no Centro de Ilhéus. Fazemos impresso e personalizado pra Ilhéus e
+            Itabuna desde o balcão até a entrega.
           </p>
         </div>
 

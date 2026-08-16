@@ -5,17 +5,17 @@ const itens = [
   {
     icon: MessageCircle,
     titulo: "Atendimento via WhatsApp",
-    desc: "Envie a arte ou só a ideia: a gente responde no horário comercial e resolve tudo por lá.",
+    desc: "Manda a arte pronta ou só a ideia. A gente responde no horário da loja e resolve tudo por lá mesmo.",
   },
   {
     icon: Timer,
-    titulo: "Prazo de produção claro",
-    desc: "Você recebe o prazo junto com o orçamento — sem surpresa em cima da data do seu evento.",
+    titulo: "Prazo dito na hora",
+    desc: "O prazo vai junto com o valor, antes de você fechar. Ninguém merece descobrir atraso na véspera do evento.",
   },
   {
     icon: CreditCard,
     titulo: "Até 3x sem juros",
-    desc: "Pague no cartão de crédito em até 3x sem juros, além de pix e dinheiro na loja.",
+    desc: "Cartão de crédito em até 3x sem juros. Também aceitamos pix e dinheiro na loja.",
   },
 ];
 
@@ -25,7 +25,7 @@ export function Diferenciais() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
         <span className="eyebrow">Por que a NC</span>
         <h2 className="mt-4 max-w-2xl text-3xl text-brand-foreground sm:text-5xl">
-          Gráfica rápida de verdade, <span className="text-lime">com gente perto de você</span>
+          Rápida de verdade, <span className="text-lime">e com gente aqui do lado</span>
         </h2>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-3">
