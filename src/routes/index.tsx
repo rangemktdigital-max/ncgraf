@@ -42,7 +42,15 @@ export const Route = createFileRoute("/")({
           },
           areaServed: ["Ilhéus", "Itabuna"],
           openingHours: ["Mo-Fr 09:00-17:00", "Sa 09:00-12:00"],
-          sameAs: ["https://instagram.com/nccopiadora"],
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.5",
+            reviewCount: 51,
+          },
+          sameAs: [
+            "https://instagram.com/nccopiadora",
+            "https://share.google/qxv5sA19Osi9YG9Am",
+          ],
         }),
       },
     ],
