@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { wa } from "@/lib/nc";
+import { useOrcamento } from "./OrcamentoProvider";
 
 const links = [
   { href: "#produtos", label: "Produtos" },
@@ -13,6 +13,7 @@ const links = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { abrirOrcamento } = useOrcamento();
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 surface-brand shadow-card">
@@ -29,27 +30,25 @@ export function Header() {
               {l.label}
             </a>
           ))}
-          <a
-            href={wa("Olá, vim pelo site (menu) e quero um orçamento")}
-            target="_blank"
-            rel="noopener"
+          <button
+            type="button"
+            onClick={() => abrirOrcamento("menu")}
             className="btn-lime !px-5 !py-2 text-sm"
           >
             <WhatsAppIcon className="size-4" aria-hidden="true" />
             WhatsApp
-          </a>
+          </button>
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
-          <a
-            href={wa("Olá, vim pelo site (topo) e quero um orçamento")}
-            target="_blank"
-            rel="noopener"
-            aria-label="Falar no WhatsApp"
+          <button
+            type="button"
+            onClick={() => abrirOrcamento("topo-mobile")}
+            aria-label="Solicitar orçamento"
             className="grid size-10 place-items-center rounded-full bg-lime text-lime-foreground"
           >
             <WhatsAppIcon className="size-5" aria-hidden="true" />
-          </a>
+          </button>
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Fechar menu" : "Abrir menu"}

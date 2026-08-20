@@ -9,7 +9,7 @@ import {
   PartyPopper,
 } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { wa } from "@/lib/nc";
+import { useOrcamento } from "./OrcamentoProvider";
 
 import brindes from "@/assets/foto-brindes.jpg";
 import kitR2 from "@/assets/foto-kit-r2.jpg";
@@ -20,34 +20,36 @@ const destaques = [
     titulo: "Brindes Personalizados",
     desc: "Caneca, agenda, caneta e kit com a sua marca. Fecha bem como presente de cliente.",
     img: brindes,
-    lead: "brindes personalizados",
+    servico: "Brindes personalizados",
   },
   {
     titulo: "Kits e Sacolas Corporativas",
     desc: "Montamos o kit inteiro: sacola, embalagem e o que vai dentro, tudo com a sua identidade.",
     img: kitR2,
-    lead: "kits e sacolas corporativas",
+    servico: "Kits e sacolas",
   },
   {
     titulo: "Agendas e Canecas com Nome",
     desc: "Agenda 2026 com capa personalizada e caneca com nome, foto ou frase.",
     img: agendaCaneca,
-    lead: "agendas e canecas personalizadas",
+    servico: "Agendas e canecas",
   },
 ];
 
 const outros = [
-  { titulo: "Cartões de Visita", desc: "Papel bom, laminação fosca ou brilho.", icon: CreditCard, lead: "cartões de visita" },
-  { titulo: "Adesivos e Tags", desc: "Recortado, rótulo de embalagem e folder.", icon: Sticker, lead: "adesivos, tags e folders" },
-  { titulo: "Banners e Lonas", desc: "Grande formato pra evento e fachada.", icon: Flag, lead: "banner, backdrop ou lona" },
-  { titulo: "Troféus e Medalhas", desc: "Premiação de corrida, campeonato e festival.", icon: Trophy, lead: "troféus e medalhas" },
-  { titulo: "Papelaria", desc: "Bloco, receituário, envelope e timbrado.", icon: FileText, lead: "papelaria personalizada" },
-  { titulo: "Etiqueta Escolar", desc: "Nome da criança no material e no uniforme.", icon: Tag, lead: "etiquetas escolares" },
-  { titulo: "Fitas Personalizadas", desc: "Cetim impresso pra fechar embalagem.", icon: Ribbon, lead: "fitas personalizadas" },
-  { titulo: "Datas Comemorativas", desc: "Lembrancinha, caixa e decoração impressa.", icon: PartyPopper, lead: "produtos para datas comemorativas" },
+  { titulo: "Cartões de Visita", desc: "Papel bom, laminação fosca ou brilho.", icon: CreditCard, servico: "Cartões de visita" },
+  { titulo: "Adesivos e Tags", desc: "Recortado, rótulo de embalagem e folder.", icon: Sticker, servico: "Adesivos e tags" },
+  { titulo: "Banners e Lonas", desc: "Grande formato pra evento e fachada.", icon: Flag, servico: "Banners e lonas" },
+  { titulo: "Troféus e Medalhas", desc: "Premiação de corrida, campeonato e festival.", icon: Trophy, servico: "Troféus e medalhas" },
+  { titulo: "Papelaria", desc: "Bloco, receituário, envelope e timbrado.", icon: FileText, servico: "Papelaria" },
+  { titulo: "Etiqueta Escolar", desc: "Nome da criança no material e no uniforme.", icon: Tag, servico: "Etiqueta escolar" },
+  { titulo: "Fitas Personalizadas", desc: "Cetim impresso pra fechar embalagem.", icon: Ribbon, servico: "Fitas personalizadas" },
+  { titulo: "Datas Comemorativas", desc: "Lembrancinha, caixa e decoração impressa.", icon: PartyPopper, servico: "Datas comemorativas" },
 ];
 
 export function Produtos() {
+  const { abrirOrcamento } = useOrcamento();
+
   return (
     <section id="produtos" className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
       <span className="eyebrow">Catálogo</span>
@@ -77,15 +79,14 @@ export function Produtos() {
             <div className="flex flex-1 flex-col p-5">
               <h3 className="text-xl">{p.titulo}</h3>
               <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.desc}</p>
-              <a
-                href={wa(`Olá, quero um orçamento de ${p.lead}`)}
-                target="_blank"
-                rel="noopener"
+              <button
+                type="button"
+                onClick={() => abrirOrcamento("produto", p.servico)}
                 className="mt-4 inline-flex items-center gap-2 font-display font-bold text-brand transition-colors hover:text-accent-foreground"
               >
                 <WhatsAppIcon className="size-4 text-lime" aria-hidden="true" />
                 Pedir orçamento
-              </a>
+              </button>
             </div>
           </article>
         ))}
@@ -93,12 +94,11 @@ export function Produtos() {
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {outros.map((p) => (
-          <a
+          <button
             key={p.titulo}
-            href={wa(`Olá, quero um orçamento de ${p.lead}`)}
-            target="_blank"
-            rel="noopener"
-            className="group flex flex-col rounded-2xl border border-border bg-card p-5 shadow-card transition-colors hover:border-lime"
+            type="button"
+            onClick={() => abrirOrcamento("catalogo", p.servico)}
+            className="group flex flex-col rounded-2xl border border-border bg-card p-5 text-left shadow-card transition-colors hover:border-lime"
           >
             <p.icon className="size-6 text-brand" aria-hidden="true" />
             <h3 className="mt-3 text-lg">{p.titulo}</h3>
@@ -107,7 +107,7 @@ export function Produtos() {
               <WhatsAppIcon className="size-4 text-lime" aria-hidden="true" />
               Pedir orçamento
             </span>
-          </a>
+          </button>
         ))}
       </div>
     </section>

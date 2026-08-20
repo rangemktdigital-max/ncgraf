@@ -1,9 +1,12 @@
 import { MapPin, Clock } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import lojaAsset from "@/assets/20251204_191515.jpg.asset.json";
-import { wa, NC } from "@/lib/nc";
+import { NC } from "@/lib/nc";
+import { useOrcamento } from "./OrcamentoProvider";
 
 export function Localizacao() {
+  const { abrirOrcamento } = useOrcamento();
+
   return (
     <section id="localizacao" className="bg-secondary">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
@@ -41,15 +44,14 @@ export function Localizacao() {
                 {NC.horario}
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={wa("Olá, vim pela seção de localização e quero um orçamento")}
-                  target="_blank"
-                  rel="noopener"
+                <button
+                  type="button"
+                  onClick={() => abrirOrcamento("localizacao")}
                   className="btn-lime !py-2.5 text-sm"
                 >
                   <WhatsAppIcon className="size-4" aria-hidden="true" />
                   Chamar no WhatsApp
-                </a>
+                </button>
                 <a
                   href={NC.maps}
                   target="_blank"
