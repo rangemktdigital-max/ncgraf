@@ -8,6 +8,7 @@ import { Localizacao } from "@/components/nc/Localizacao";
 import { ProvaSocial } from "@/components/nc/ProvaSocial";
 import { Footer } from "@/components/nc/Footer";
 import { WhatsAppFab } from "@/components/nc/WhatsAppFab";
+import { OrcamentoProvider } from "@/components/nc/OrcamentoProvider";
 
 const title = "NC Copiadora | Gráfica Rápida em Ilhéus e Itabuna/BA";
 const description =
@@ -60,7 +61,8 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background">
+    <OrcamentoProvider>
+      <div className="min-h-screen bg-background">
       <Header />
       <main>
         <Hero />
@@ -71,7 +73,8 @@ function Index() {
         <ProvaSocial />
       </main>
       <Footer />
-      <WhatsAppFab />
-    </div>
+        <WhatsAppFab />
+      </div>
+    </OrcamentoProvider>
   );
 }
