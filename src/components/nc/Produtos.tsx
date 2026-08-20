@@ -9,7 +9,7 @@ import {
   PartyPopper,
 } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { wa } from "@/lib/nc";
+import { useOrcamento } from "./OrcamentoProvider";
 
 import brindes from "@/assets/foto-brindes.jpg";
 import kitR2 from "@/assets/foto-kit-r2.jpg";
@@ -48,6 +48,8 @@ const outros = [
 ];
 
 export function Produtos() {
+  const { abrirOrcamento } = useOrcamento();
+
   return (
     <section id="produtos" className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
       <span className="eyebrow">Catálogo</span>
@@ -77,15 +79,14 @@ export function Produtos() {
             <div className="flex flex-1 flex-col p-5">
               <h3 className="text-xl">{p.titulo}</h3>
               <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.desc}</p>
-              <a
-                href={wa(`Olá, quero um orçamento de ${p.lead}`)}
-                target="_blank"
-                rel="noopener"
+              <button
+                type="button"
+                onClick={() => abrirOrcamento("produto", p.servico)}
                 className="mt-4 inline-flex items-center gap-2 font-display font-bold text-brand transition-colors hover:text-accent-foreground"
               >
                 <WhatsAppIcon className="size-4 text-lime" aria-hidden="true" />
                 Pedir orçamento
-              </a>
+              </button>
             </div>
           </article>
         ))}
@@ -93,12 +94,11 @@ export function Produtos() {
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {outros.map((p) => (
-          <a
+          <button
             key={p.titulo}
-            href={wa(`Olá, quero um orçamento de ${p.lead}`)}
-            target="_blank"
-            rel="noopener"
-            className="group flex flex-col rounded-2xl border border-border bg-card p-5 shadow-card transition-colors hover:border-lime"
+            type="button"
+            onClick={() => abrirOrcamento("catalogo", p.servico)}
+            className="group flex flex-col rounded-2xl border border-border bg-card p-5 text-left shadow-card transition-colors hover:border-lime"
           >
             <p.icon className="size-6 text-brand" aria-hidden="true" />
             <h3 className="mt-3 text-lg">{p.titulo}</h3>
@@ -107,7 +107,7 @@ export function Produtos() {
               <WhatsAppIcon className="size-4 text-lime" aria-hidden="true" />
               Pedir orçamento
             </span>
-          </a>
+          </button>
         ))}
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { Star, Instagram } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { wa, NC } from "@/lib/nc";
+import { NC } from "@/lib/nc";
+import { useOrcamento } from "./OrcamentoProvider";
 import kitAsset from "@/assets/20251204_153548.jpg.asset.json";
 import agendaAsset from "@/assets/20251204_184340.jpg.asset.json";
 import balcaoAsset from "@/assets/20251204_191454.jpg.asset.json";
@@ -28,6 +29,8 @@ const depoimentos = [
 ];
 
 export function ProvaSocial() {
+  const { abrirOrcamento } = useOrcamento();
+
   return (
     <section id="contato" className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
       <span className="eyebrow">
@@ -95,15 +98,10 @@ export function ProvaSocial() {
           Manda o que você precisa e <span className="text-lime">a gente volta com prazo e valor</span>
         </h3>
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a
-            href={wa("Olá, vim pela prova social do site e quero um orçamento")}
-            target="_blank"
-            rel="noopener"
-            className="btn-lime"
-          >
+          <button type="button" onClick={() => abrirOrcamento("prova-social")} className="btn-lime">
             <WhatsAppIcon className="size-5" aria-hidden="true" />
             Falar no WhatsApp
-          </a>
+          </button>
           <a
             href={NC.instagram}
             target="_blank"

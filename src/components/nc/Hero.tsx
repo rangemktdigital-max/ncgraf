@@ -1,9 +1,11 @@
 import { MapPin, Clock, CreditCard } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import heroAsset from "@/assets/20251204_191350.jpg.asset.json";
-import { wa } from "@/lib/nc";
+import { useOrcamento } from "./OrcamentoProvider";
 
 export function Hero() {
+  const { abrirOrcamento } = useOrcamento();
+
   return (
     <section id="topo" className="relative isolate overflow-hidden pt-16">
       <img
@@ -35,15 +37,14 @@ export function Hero() {
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
-            href={wa("Olá, quero solicitar um orçamento")}
-            target="_blank"
-            rel="noopener"
+          <button
+            type="button"
+            onClick={() => abrirOrcamento("hero")}
             className="btn-lime text-base"
           >
             <WhatsAppIcon className="size-5" aria-hidden="true" />
             Solicite orçamento
-          </a>
+          </button>
         </div>
 
         <ul className="mt-10 grid gap-3 sm:grid-cols-3">

@@ -1,6 +1,6 @@
 import { Timer, CreditCard } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { wa } from "@/lib/nc";
+import { useOrcamento } from "./OrcamentoProvider";
 
 const itens = [
   {
@@ -21,6 +21,8 @@ const itens = [
 ];
 
 export function Diferenciais() {
+  const { abrirOrcamento } = useOrcamento();
+
   return (
     <section className="surface-brand">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
@@ -45,15 +47,10 @@ export function Diferenciais() {
         </div>
 
         <div className="mt-10">
-          <a
-            href={wa("Olá, vi os diferenciais no site e quero falar com um atendente")}
-            target="_blank"
-            rel="noopener"
-            className="btn-lime"
-          >
+          <button type="button" onClick={() => abrirOrcamento("diferenciais")} className="btn-lime">
             <WhatsAppIcon className="size-5" aria-hidden="true" />
             Falar com um atendente
-          </a>
+          </button>
         </div>
       </div>
     </section>

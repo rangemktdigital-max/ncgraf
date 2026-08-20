@@ -1,9 +1,12 @@
 import { Instagram, MapPin, Clock } from "lucide-react";
 import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { wa, NC, WHATSAPP_NUMBER } from "@/lib/nc";
+import { NC, WHATSAPP_NUMBER } from "@/lib/nc";
+import { useOrcamento } from "./OrcamentoProvider";
 
 export function Footer() {
+  const { abrirOrcamento } = useOrcamento();
+
   return (
     <footer className="surface-brand">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:grid-cols-3">
@@ -17,15 +20,14 @@ export function Footer() {
 
         <div className="text-sm text-brand-foreground/80">
           <h3 className="text-base text-brand-foreground">Contato</h3>
-          <a
-            href={wa("Olá, vim pelo rodapé do site e quero um orçamento")}
-            target="_blank"
-            rel="noopener"
+          <button
+            type="button"
+            onClick={() => abrirOrcamento("rodape")}
             className="mt-3 flex items-center gap-2 font-bold text-lime"
           >
             <WhatsAppIcon className="size-4" aria-hidden="true" />
             (73) 3634-7138 · WhatsApp
-          </a>
+          </button>
           <a
             href={NC.instagram}
             target="_blank"
