@@ -1,29 +1,32 @@
-# Descobrir por que os leads não chegam na planilha
+# Corrigir o envio de leads para a planilha
 
-## O que já verifiquei agora
+Escopo: apenas a integração com o Google Sheets. Nada de UI, textos, CTAs, WhatsApp, banco de dados ou publicação.
 
-- O segredo `GOOGLE_SHEETS_WEBHOOK_URL` está salvo no projeto e disponível para o servidor.
-- A URL tem o formato certo: `https://script.google.com/macros/s/.../exec` (implantação final, não a de teste `/dev`).
-- Ao acessar essa URL, o Google responde normalmente (não é tela de login), ou seja, a implantação parece pública.
+## O que está errado hoje
 
-Ainda não está confirmado onde o envio se perde. Hoje o site engole qualquer falha em silêncio: se a planilha não responde, o WhatsApp abre do mesmo jeito e ninguém fica sabendo do erro. Por isso não dá para saber, só olhando a tela, se o problema é no site ou no Apps Script.
+O envio falha em silêncio: a função de servidor devolve `{ enviado: false }` em qualquer erro, o cliente ignora o retorno, fecha o modal e abre o WhatsApp. Assim não dá para saber se o problema foi segredo ausente, resposta de erro do Apps Script ou falha de rede.
 
-## Plano
+## O que vou fazer
 
-1. **Teste direto no webhook** — mandar um envio de teste (nome "TESTE NC") para a URL do Apps Script e ler a resposta exata do Google: sucesso, erro de permissão, erro no código do script ou função inexistente. Isso separa "problema no site" de "problema no Apps Script" em um passo.
-2. **Teste do fluxo real** — preencher e enviar o formulário do site em um navegador automatizado e capturar o que a função de servidor devolve/registra.
-3. **Corrigir conforme o resultado**, entre os casos prováveis:
-   - Implantação com acesso restrito ou versão antiga publicada → orientar a nova implantação com os ajustes exatos.
-   - Formato do corpo que o `doPost` não entende → passar a enviar também como `text/plain` ou `form-urlencoded`, que é o que o Apps Script aceita sem tropeço.
-   - Redirecionamento interno do Google não seguido corretamente pelo servidor → tratar o redirecionamento na chamada.
-4. **Parar de falhar em silêncio** — registrar o motivo real da falha no log do servidor e mostrar um aviso discreto no formulário quando o registro não acontecer (o WhatsApp continua abrindo normalmente, o lead nunca se perde).
+1. **Servidor (`src/lib/orcamento.functions.ts`)**
+   - Ler `GOOGLE_SHEETS_WEBHOOK_URL` apenas dentro do handler (nunca no cliente). Sem o segredo, lançar erro de configuração claro (`webhook_nao_configurado`).
+   - POST em JSON com `{ nome, telefone, servicos, mensagem, origem }` (mais data/hora) para a URL `/exec`, com `redirect: "follow"` (o Apps Script redireciona internamente antes de responder).
+   - Tratar como erro: resposta não-2xx **e** corpo JSON com `{ ok: false }`. Em ambos os casos, lançar erro com status + trecho da resposta, e registrar no log do servidor.
+   - Retornar `{ ok: true }` só quando o Apps Script confirmar.
 
-## Detalhes técnicos
+2. **Cliente (`src/components/nc/OrcamentoProvider.tsx`)**
+   - Aguardar o sucesso do envio antes de fechar o modal e abrir o WhatsApp.
+   - Em caso de falha: manter o modal aberto, manter os dados preenchidos e mostrar uma mensagem de erro visível acima do botão, com o motivo resumido. Botão volta ao estado normal para nova tentativa.
 
-- `src/lib/orcamento.functions.ts`: retornar e logar `status` + trecho da resposta do Apps Script em caso de erro; ajustar `content-type`/`redirect: "follow"` se o teste indicar.
-- `src/components/nc/OrcamentoProvider.tsx`: usar o retorno para exibir um aviso curto quando `enviado === false`, sem bloquear o envio ao WhatsApp.
-- Nenhuma mudança de layout ou de texto da página.
+3. **Diagnóstico durante a correção**
+   - Chamar a URL do Apps Script direto do servidor com um lead de teste ("TESTE NC") e ler a resposta exata do Google. Isso mostra na hora se o problema é permissão da implantação, versão publicada antiga ou erro dentro do `doPost`. Se for do lado do Apps Script, te aviso exatamente o que ajustar na implantação.
+   - Reproduzir o envio real no navegador automatizado e conferir o log do servidor.
 
-## Observação
+4. **Validação**
+   - Rodar typecheck e informar arquivos e funções alterados.
 
-O teste do passo 1 grava uma linha de teste na sua planilha, se tudo estiver certo. É só apagá-la depois.
+## Observações
+
+- A URL do webhook continua exclusivamente no servidor; nada dela chega ao navegador.
+- O teste do passo 3 pode gravar uma linha "TESTE NC" na planilha — é só apagar.
+- Mudança de comportamento intencional: se a planilha falhar, o WhatsApp **não** abre mais automaticamente, conforme pedido. O modal fica aberto com o erro.
