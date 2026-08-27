@@ -51,12 +51,14 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
   const [mensagem, setMensagem] = useState("");
   const [erros, setErros] = useState<Erros>({});
   const [enviando, setEnviando] = useState(false);
+  const [erroEnvio, setErroEnvio] = useState<string | null>(null);
 
   const salvarPlanilha = useServerFn(enviarLeadPlanilha);
 
   const abrirOrcamento = useCallback((o = "site", servicoInicial?: string) => {
     setOrigem(o);
     setErros({});
+    setErroEnvio(null);
     if (servicoInicial) setServicos((s) => (s.includes(servicoInicial) ? s : [...s, servicoInicial]));
     setAberto(true);
   }, []);
@@ -77,6 +79,7 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
 
   const enviar = async () => {
     if (enviando) return;
+    setErroEnvio(null);
     if (!validar()) return;
     setEnviando(true);
 
@@ -88,11 +91,19 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
       origem,
     };
 
-    // Planilha primeiro (não bloqueia o WhatsApp se falhar).
+    // O registro na planilha precisa confirmar antes de seguir para o WhatsApp.
     try {
-      await salvarPlanilha({ data: payload });
+      const resultado = await salvarPlanilha({ data: payload });
+      if (!resultado.ok) {
+        setErroEnvio(resultado.mensagem ?? "Não conseguimos registrar seu pedido agora.");
+        setEnviando(false);
+        return;
+      }
     } catch (err) {
       console.error("Falha ao registrar lead na planilha", err);
+      setErroEnvio("Não conseguimos registrar seu pedido agora. Tente novamente em instantes.");
+      setEnviando(false);
+      return;
     }
 
     const texto =
@@ -113,6 +124,7 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
     setAberto(false);
     setMensagem("");
   };
+
 
   const value = useMemo(() => ({ abrirOrcamento }), [abrirOrcamento]);
 
@@ -231,6 +243,16 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
                   className="mt-1.5 w-full resize-y rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus-visible:border-brand"
                 />
               </div>
+
+              {erroEnvio && (
+                <p
+                  role="alert"
+                  className="rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+                >
+                  {erroEnvio}
+                </p>
+              )}
+
 
               <button type="submit" disabled={enviando} className="btn-lime w-full disabled:opacity-60">
                 <WhatsAppIcon className="size-5" aria-hidden="true" />
