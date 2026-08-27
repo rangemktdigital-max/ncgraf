@@ -244,6 +244,16 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
                 />
               </div>
 
+              {erroEnvio && (
+                <p
+                  role="alert"
+                  className="rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+                >
+                  {erroEnvio}
+                </p>
+              )}
+
+
               <button type="submit" disabled={enviando} className="btn-lime w-full disabled:opacity-60">
                 <WhatsAppIcon className="size-5" aria-hidden="true" />
                 {enviando ? "Enviando..." : "Enviar no WhatsApp"}
