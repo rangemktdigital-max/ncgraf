@@ -125,7 +125,9 @@ export function Produtos() {
               <WhatsAppIcon className="size-4 text-lime" aria-hidden="true" />
               Pedir orçamento
             </span>
+            </div>
           </button>
+
         ))}
       </div>
     </section>
