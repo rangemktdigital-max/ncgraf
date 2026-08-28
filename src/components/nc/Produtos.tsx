@@ -14,6 +14,7 @@ import { useOrcamento } from "./OrcamentoProvider";
 import brindes from "@/assets/foto-brindes.jpg";
 import kitR2 from "@/assets/foto-kit-r2.jpg";
 import agendaCaneca from "@/assets/foto-agenda-caneca.jpg";
+import fitasAsset from "@/assets/foto-fitas.jpg.asset.json";
 
 const destaques = [
   {
@@ -36,16 +37,23 @@ const destaques = [
   },
 ];
 
-const outros = [
+const outros: {
+  titulo: string;
+  desc: string;
+  icon: typeof CreditCard;
+  servico: string;
+  img?: string;
+}[] = [
   { titulo: "Cartões de Visita", desc: "Papel bom, laminação fosca ou brilho.", icon: CreditCard, servico: "Cartões de visita" },
   { titulo: "Adesivos e Tags", desc: "Recortado, rótulo de embalagem e folder.", icon: Sticker, servico: "Adesivos e tags" },
   { titulo: "Banners e Lonas", desc: "Grande formato pra evento e fachada.", icon: Flag, servico: "Banners e lonas" },
   { titulo: "Troféus e Medalhas", desc: "Premiação de corrida, campeonato e festival.", icon: Trophy, servico: "Troféus e medalhas" },
   { titulo: "Papelaria", desc: "Bloco, receituário, envelope e timbrado.", icon: FileText, servico: "Papelaria" },
   { titulo: "Etiqueta Escolar", desc: "Nome da criança no material e no uniforme.", icon: Tag, servico: "Etiqueta escolar" },
-  { titulo: "Fitas Personalizadas", desc: "Cetim impresso pra fechar embalagem.", icon: Ribbon, servico: "Fitas personalizadas" },
+  { titulo: "Fitas Personalizadas", desc: "Cetim impresso em hot stamping dourado, com a sua marca.", icon: Ribbon, servico: "Fitas personalizadas", img: fitasAsset.url },
   { titulo: "Datas Comemorativas", desc: "Lembrancinha, caixa e decoração impressa.", icon: PartyPopper, servico: "Datas comemorativas" },
 ];
+
 
 export function Produtos() {
   const { abrirOrcamento } = useOrcamento();
@@ -98,16 +106,28 @@ export function Produtos() {
             key={p.titulo}
             type="button"
             onClick={() => abrirOrcamento("catalogo", p.servico)}
-            className="group flex flex-col rounded-2xl border border-border bg-card p-5 text-left shadow-card transition-colors hover:border-lime"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card text-left shadow-card transition-colors hover:border-lime"
           >
+            {p.img ? (
+              <img
+                src={p.img}
+                alt={`${p.titulo} — NC Copiadora`}
+                loading="lazy"
+                className="h-32 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            ) : null}
+            <div className="flex flex-1 flex-col p-5">
             <p.icon className="size-6 text-brand" aria-hidden="true" />
             <h3 className="mt-3 text-lg">{p.titulo}</h3>
+
             <p className="mt-1 flex-1 text-sm text-muted-foreground">{p.desc}</p>
             <span className="mt-4 inline-flex items-center gap-2 font-display text-sm font-bold text-brand">
               <WhatsAppIcon className="size-4 text-lime" aria-hidden="true" />
               Pedir orçamento
             </span>
+            </div>
           </button>
+
         ))}
       </div>
     </section>
