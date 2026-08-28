@@ -38,15 +38,23 @@ const destaques = [
 ];
 
 const outros = [
+const outros: {
+  titulo: string;
+  desc: string;
+  icon: typeof CreditCard;
+  servico: string;
+  img?: string;
+}[] = [
   { titulo: "Cartões de Visita", desc: "Papel bom, laminação fosca ou brilho.", icon: CreditCard, servico: "Cartões de visita" },
   { titulo: "Adesivos e Tags", desc: "Recortado, rótulo de embalagem e folder.", icon: Sticker, servico: "Adesivos e tags" },
   { titulo: "Banners e Lonas", desc: "Grande formato pra evento e fachada.", icon: Flag, servico: "Banners e lonas" },
   { titulo: "Troféus e Medalhas", desc: "Premiação de corrida, campeonato e festival.", icon: Trophy, servico: "Troféus e medalhas" },
   { titulo: "Papelaria", desc: "Bloco, receituário, envelope e timbrado.", icon: FileText, servico: "Papelaria" },
   { titulo: "Etiqueta Escolar", desc: "Nome da criança no material e no uniforme.", icon: Tag, servico: "Etiqueta escolar" },
-  { titulo: "Fitas Personalizadas", desc: "Cetim impresso pra fechar embalagem.", icon: Ribbon, servico: "Fitas personalizadas" },
+  { titulo: "Fitas Personalizadas", desc: "Cetim impresso em hot stamping dourado, com a sua marca.", icon: Ribbon, servico: "Fitas personalizadas", img: fitasAsset.url },
   { titulo: "Datas Comemorativas", desc: "Lembrancinha, caixa e decoração impressa.", icon: PartyPopper, servico: "Datas comemorativas" },
 ];
+
 
 export function Produtos() {
   const { abrirOrcamento } = useOrcamento();
