@@ -14,6 +14,7 @@ import { useOrcamento } from "./OrcamentoProvider";
 import brindes from "@/assets/foto-brindes.jpg";
 import kitR2 from "@/assets/foto-kit-r2.jpg";
 import agendaCaneca from "@/assets/foto-agenda-caneca.jpg";
+import fitasAsset from "@/assets/foto-fitas.jpg.asset.json";
 
 const destaques = [
   {
