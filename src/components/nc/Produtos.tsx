@@ -37,7 +37,6 @@ const destaques = [
   },
 ];
 
-const outros = [
 const outros: {
   titulo: string;
   desc: string;
