@@ -1,7 +1,7 @@
 import { Instagram, MapPin, Clock } from "lucide-react";
 import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { NC, WHATSAPP_NUMBER } from "@/lib/nc";
+import { NC } from "@/lib/nc";
 import { useOrcamento } from "./OrcamentoProvider";
 
 export function Footer() {
@@ -53,7 +53,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-brand-foreground/12 px-4 py-5 text-center text-xs text-brand-foreground/60">
-        {NC.nome} · CNPJ {NC.cnpj} · wa.me/{WHATSAPP_NUMBER}
+        {NC.nome}
       </div>
     </footer>
   );

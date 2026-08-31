@@ -14,16 +14,16 @@ export function Localizacao() {
           Atendemos <span className="text-brand">Ilhéus e Itabuna</span>
         </h2>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:items-start">
           <iframe
             src={NC.mapsEmbed}
             title="Mapa da NC Copiadora em Ilhéus"
             loading="lazy"
-            className="h-72 w-full rounded-2xl border border-border shadow-card sm:h-96"
+            className="h-64 w-full rounded-2xl border border-border shadow-card sm:h-72 lg:h-[300px]"
             referrerPolicy="no-referrer-when-downgrade"
           />
 
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-8">
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-8 lg:self-start">
             <p className="flex gap-3 text-sm">
               <MapPin className="mt-0.5 size-5 shrink-0 text-brand" aria-hidden="true" />
               {NC.endereco}
@@ -36,7 +36,7 @@ export function Localizacao() {
               <button
                 type="button"
                 onClick={() => abrirOrcamento("localizacao")}
-                className="btn-lime !py-2.5 text-sm"
+                className="btn-lime min-h-11 text-sm"
               >
                 <WhatsAppIcon className="size-4" aria-hidden="true" />
                 Chamar no WhatsApp
@@ -45,7 +45,7 @@ export function Localizacao() {
                 href={NC.maps}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center justify-center rounded-full border-2 border-brand px-5 py-2.5 font-display text-sm font-bold text-brand transition-colors hover:bg-brand hover:text-brand-foreground"
+                className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand px-5 py-2.5 font-display text-sm font-bold text-brand transition-colors hover:bg-brand hover:text-brand-foreground"
               >
                 Como chegar
               </a>
