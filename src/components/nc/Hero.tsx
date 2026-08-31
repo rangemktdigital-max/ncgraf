@@ -28,11 +28,6 @@ const slides = [
     alt: "Impressora de grande formato imprimindo adesivos personalizados",
     position: "50% 50%",
   },
-  {
-    url: carrossel5.url,
-    alt: "Equipe da NC Copiadora atendendo pedidos no computador",
-    position: "15% 15%",
-  },
 ];
 
 export function Hero() {
