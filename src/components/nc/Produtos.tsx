@@ -52,7 +52,7 @@ const produtos: Produto[] = [
     icon: CreditCard,
     servico: "Cartões de visita",
     img: cartaoAsset.url,
-    position: "50% 40%",
+    position: "50% 80%",
   },
   {
     titulo: "Adesivos e Tags",
