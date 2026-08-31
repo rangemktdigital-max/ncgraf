@@ -21,9 +21,12 @@ export const Route = createFileRoute("/")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "https://orcamento.nccopiadora.com.br/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://orcamento.nccopiadora.com.br/" }],
+
     scripts: [
       {
         type: "application/ld+json",
