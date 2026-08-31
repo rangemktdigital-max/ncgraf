@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MapPin, Clock, CreditCard } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import carrossel1 from "@/assets/carrossel-1.webp.asset.json";
-import carrossel2 from "@/assets/carrossel-2.webp.asset.json";
+import carrossel2 from "@/assets/carrossel-2b.webp.asset.json";
 import carrossel3 from "@/assets/carrossel-3.webp.asset.json";
 import carrossel4 from "@/assets/carrossel-4.webp.asset.json";
 import { useOrcamento } from "./OrcamentoProvider";
@@ -15,7 +15,7 @@ const slides = [
   {
     url: carrossel2.url,
     alt: "Fachada da NC Copiadora no Centro de Ilhéus",
-    position: "50% 80%",
+    position: "50% 50%",
   },
   {
     url: carrossel3.url,
