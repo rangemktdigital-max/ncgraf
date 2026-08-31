@@ -34,8 +34,14 @@ const depoimentos = [
 function iniciais(nome: string) {
   const partes = nome.trim().split(/\s+/).filter(Boolean);
   if (partes.length === 0) return "?";
-  if (partes.length === 1) return partes[0].slice(0, 2).toUpperCase();
-  return (partes[0][0] + partes[partes.length - 1][0]).toUpperCase();
+  const primeiro = partes[0];
+  if (partes.length === 1) {
+    return primeiro.slice(0, 2).toUpperCase();
+  }
+  const ultimo = partes[partes.length - 1];
+  const a = primeiro[0] ?? "";
+  const b = ultimo[0] ?? "";
+  return (a + b).toUpperCase();
 }
 
 export function ProvaSocial() {
