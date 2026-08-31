@@ -1,25 +1,52 @@
+import { useEffect, useState } from "react";
 import { MapPin, Clock, CreditCard } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import heroAsset from "@/assets/20251204_191350.jpg.asset.json";
+import carrossel1 from "@/assets/carrossel-1.webp.asset.json";
+import carrossel2 from "@/assets/carrossel-2.webp.asset.json";
+import carrossel3 from "@/assets/carrossel-3.webp.asset.json";
+import carrossel4 from "@/assets/carrossel-4.webp.asset.json";
+import carrossel5 from "@/assets/carrossel-5.webp.asset.json";
 import { useOrcamento } from "./OrcamentoProvider";
+
+const slides = [
+  { url: carrossel1.url, alt: "Balcão da NC Copiadora com canecas e agendas personalizadas" },
+  { url: carrossel2.url, alt: "Fachada da NC Copiadora no Centro de Ilhéus" },
+  { url: carrossel3.url, alt: "Clientes sendo atendidos na loja da NC Copiadora" },
+  { url: carrossel4.url, alt: "Impressora de grande formato imprimindo adesivos personalizados" },
+  { url: carrossel5.url, alt: "Equipe da NC Copiadora atendendo pedidos no computador" },
+];
 
 export function Hero() {
   const { abrirOrcamento } = useOrcamento();
+  const [ativo, setAtivo] = useState(0);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setAtivo((i) => (i + 1) % slides.length);
+    }, 3000);
+    return () => window.clearInterval(id);
+  }, []);
 
   return (
     <section id="topo" className="relative isolate overflow-hidden pt-16">
-      <img
-        src={heroAsset.url}
-        alt="Parque gráfico da NC Copiadora em Ilhéus com impressoras e produtos personalizados"
-        width={1200}
-        height={900}
-        className="absolute inset-0 -z-20 size-full object-cover"
-      />
+      <div className="absolute inset-0 -z-20" aria-hidden={undefined}>
+        {slides.map((slide, i) => (
+          <img
+            key={slide.url}
+            src={slide.url}
+            alt={slide.alt}
+            loading={i === 0 ? "eager" : "lazy"}
+            className="absolute inset-0 size-full object-cover object-center transition-opacity duration-700 ease-in-out"
+            style={{ opacity: i === ativo ? 1 : 0 }}
+          />
+        ))}
+      </div>
       <div
         className="absolute inset-0 -z-10"
         style={{ background: "var(--gradient-hero)" }}
         aria-hidden="true"
       />
+
 
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
         <span className="eyebrow">Ilhéus - itabuna e região</span>
