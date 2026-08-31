@@ -2,15 +2,16 @@ import { Star, Instagram } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { NC } from "@/lib/nc";
 import { useOrcamento } from "./OrcamentoProvider";
-import kitAsset from "@/assets/20251204_153548.jpg.asset.json";
-import agendaAsset from "@/assets/20251204_184340.jpg.asset.json";
-import balcaoAsset from "@/assets/20251204_191454.jpg.asset.json";
+import pedido1 from "@/assets/pedido-01.webp.asset.json";
+import pedido2 from "@/assets/pedido-02.webp.asset.json";
+import pedido3 from "@/assets/pedido-03.webp.asset.json";
 
 const galeria = [
-  { src: kitAsset.url, alt: "Kit presente personalizado em sacola transparente" },
-  { src: agendaAsset.url, alt: "Agenda e caneca personalizadas produzidas pela NC Copiadora" },
-  { src: balcaoAsset.url, alt: "Atendimento no balcão da NC Copiadora em Ilhéus" },
+  { src: pedido1.url, alt: "Fitas de cetim personalizadas de Páscoa em hot stamping" },
+  { src: pedido2.url, alt: "Adesivos redondos dourados personalizados com a marca do cliente" },
+  { src: pedido3.url, alt: "Livretos infantis impressos e acabados na NC Copiadora" },
 ];
+
 
 /** Avaliações reais publicadas no perfil do Google da NC Copiadora. */
 const depoimentos = [
