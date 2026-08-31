@@ -105,22 +105,20 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
       origem,
     };
 
-    // O registro na planilha precisa confirmar antes de seguir para o WhatsApp.
+    // O registro na planilha é best-effort: uma falha de logging nunca pode
+    // impedir o cliente de chegar ao WhatsApp (perda direta de lead).
     try {
       const resultado = await salvarPlanilha({ data: payload });
-      if (!resultado.ok) {
-        setErroEnvio(resultado.mensagem ?? "Não conseguimos registrar seu pedido agora.");
-        setEnviando(false);
-        return;
+      if (resultado.ok) {
+        // Lead confirmado pela planilha: só aqui disparamos a conversão.
+        pushDataLayer("lead", { origem: payload.origem });
+      } else {
+        console.error("Planilha não confirmou o lead", resultado.mensagem);
       }
-      // Lead confirmado pela planilha: só aqui disparamos a conversão.
-      pushDataLayer("lead", { origem: payload.origem });
     } catch (err) {
       console.error("Falha ao registrar lead na planilha", err);
-      setErroEnvio("Não conseguimos registrar seu pedido agora. Tente novamente em instantes.");
-      setEnviando(false);
-      return;
     }
+
 
     const texto =
       `Olá! Quero um orçamento.\n\n` +
