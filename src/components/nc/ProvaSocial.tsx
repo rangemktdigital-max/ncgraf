@@ -15,18 +15,28 @@ const galeria = [
 /** Avaliações reais publicadas no perfil do Google da NC Copiadora. */
 const depoimentos = [
   {
+    nome: "Rose Cunha",
+    texto:
+      "Atendimento acolhedor. Pessoal competente e solícito. Produtos impecáveis e prazos cumpridos perfeitamente. Recomendo sempre.",
+  },
+  {
+    nome: "Saulo Fabian Borges Sória",
+    texto:
+      "Excelente atendimento da equipe de recepção e técnica de impressão. Atendimento do Ruan diferenciado.",
+  },
+  {
     nome: "Caique Alca",
-    texto: "Atendimento profissional e prazos atrativos com preços adequados.",
-  },
-  {
-    nome: "Paulo Roberto Alves dos Santos",
-    texto: "Cheguei na loja por volta de 10h e tinha certa quantidade de cópias pra fazer.",
-  },
-  {
-    nome: "Carlos Carioca",
-    texto: "Um pessoal gente boa, educados, atenciosos, sangue bom.",
+    texto:
+      "Atendimento profissional e prazos atrativos com preços adequados. Recomendo para impressões e serviços do gênero.",
   },
 ];
+
+function iniciais(nome: string) {
+  const partes = nome.trim().split(/\s+/).filter(Boolean);
+  if (partes.length === 0) return "?";
+  if (partes.length === 1) return partes[0].slice(0, 2).toUpperCase();
+  return (partes[0][0] + partes[partes.length - 1][0]).toUpperCase();
+}
 
 export function ProvaSocial() {
   const { abrirOrcamento } = useOrcamento();
@@ -34,36 +44,62 @@ export function ProvaSocial() {
   return (
     <section id="contato" className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
       <span className="eyebrow">
-        <Star className="size-3.5 fill-current" aria-hidden="true" />O que dizem no Google
+        <Star className="size-3.5 fill-current" aria-hidden="true" />
+        Avaliações do Google
       </span>
       <h2 className="mt-4 max-w-2xl text-3xl sm:text-5xl">
         Quem já <span className="text-brand">imprime com a gente</span>
       </h2>
 
       <div className="mt-4 flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-1" aria-hidden="true">
+        <div className="flex items-baseline gap-1">
+          <span className="text-2xl font-extrabold text-foreground">{NC.googleNota}</span>
+          <span className="text-sm text-muted-foreground">/5</span>
+        </div>
+        <div className="flex items-center gap-0.5 text-yellow-500" aria-hidden="true">
           {[0, 1, 2, 3, 4].map((i) => (
-            <Star key={i} className="size-5 fill-current text-brand" />
+            <Star key={i} className="size-5 fill-current" />
           ))}
         </div>
-        <p className="text-muted-foreground">
-          <strong className="text-foreground">{NC.googleNota}</strong> de nota em{" "}
-          {NC.googleAvaliacoes} avaliações no Google
-        </p>
+        <p className="text-sm text-muted-foreground">{NC.googleAvaliacoes} avaliações</p>
       </div>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-3">
         {depoimentos.map((d) => (
-          <figure key={d.nome} className="rounded-2xl border border-border bg-card p-6 shadow-card">
-            <div className="flex gap-0.5 text-brand" aria-hidden="true">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Star key={i} className="size-4 fill-current" />
-              ))}
+          <figure
+            key={d.nome}
+            className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-card"
+          >
+            <div className="flex items-center gap-3">
+              <div
+                className="grid size-11 shrink-0 place-items-center rounded-full bg-brand text-sm font-extrabold text-brand-foreground"
+                aria-hidden="true"
+              >
+                {iniciais(d.nome)}
+              </div>
+              <div className="min-w-0">
+                <figcaption className="truncate font-semibold text-foreground">{d.nome}</figcaption>
+                <div className="mt-0.5 flex items-center gap-1.5">
+                  <div className="flex gap-0.5 text-yellow-500" aria-hidden="true">
+                    {[0, 1, 2, 3, 4].map((i) => (
+                      <Star key={i} className="size-3.5 fill-current" />
+                    ))}
+                  </div>
+                  <span className="text-xs text-muted-foreground">Avaliação no Google</span>
+                </div>
+              </div>
             </div>
-            <blockquote className="mt-3 text-foreground">“{d.texto}”</blockquote>
-            <figcaption className="mt-4 text-sm text-muted-foreground">
-              {d.nome} · avaliação no Google
-            </figcaption>
+            <blockquote className="mt-4 flex-1 text-foreground leading-relaxed">
+              “{d.texto}”
+            </blockquote>
+            <a
+              href={NC.google}
+              target="_blank"
+              rel="noopener"
+              className="mt-4 inline-flex items-center self-start text-sm font-semibold text-brand hover:underline underline-offset-4"
+            >
+              Ver no Google
+            </a>
           </figure>
         ))}
       </div>
