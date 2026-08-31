@@ -22,9 +22,10 @@ export const SERVICOS = [
   "Banners e lonas",
   "Troféus e medalhas",
   "Papelaria",
-  "Etiqueta escolar",
   "Fitas personalizadas",
   "Datas comemorativas",
+  "Placas QR Code",
+  "Kits executivos",
   "Outro / não sei ainda",
 ] as const;
 

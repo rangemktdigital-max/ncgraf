@@ -6,6 +6,8 @@ import {
   FileText,
   Ribbon,
   PartyPopper,
+  QrCode,
+  Briefcase,
 } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { useOrcamento } from "./OrcamentoProvider";
@@ -19,6 +21,9 @@ import bannersAsset from "@/assets/prod-banners.webp.asset.json";
 import trofeusAsset from "@/assets/prod-trofeus.jpg.asset.json";
 import datasAsset from "@/assets/prod-datas.jpg.asset.json";
 import fitasAsset from "@/assets/prod-fitas.jpg.asset.json";
+import papelariaAsset from "@/assets/prod-papelaria.jpg.asset.json";
+import qrCodeAsset from "@/assets/prod-qrcode.jpg.asset.json";
+import kitExecutivoAsset from "@/assets/prod-kit-executivo.png.asset.json";
 
 const destaques = [
   {
@@ -52,9 +57,11 @@ const outros: {
   { titulo: "Adesivos e Tags", desc: "Recortado, rótulo de embalagem e folder.", icon: Sticker, servico: "Adesivos e tags", img: adesivosAsset.url },
   { titulo: "Banners e Lonas", desc: "Grande formato pra evento e fachada.", icon: Flag, servico: "Banners e lonas", img: bannersAsset.url },
   { titulo: "Troféus e Medalhas", desc: "Premiação de corrida, campeonato e festival.", icon: Trophy, servico: "Troféus e medalhas", img: trofeusAsset.url },
-  { titulo: "Papelaria", desc: "Bloco, receituário, envelope e timbrado.", icon: FileText, servico: "Papelaria" },
+  { titulo: "Papelaria", desc: "Papel de seda com a marca, bloco, envelope e timbrado.", icon: FileText, servico: "Papelaria", img: papelariaAsset.url },
   { titulo: "Fitas Personalizadas", desc: "Cetim impresso em hot stamping dourado, com a sua marca.", icon: Ribbon, servico: "Fitas personalizadas", img: fitasAsset.url },
   { titulo: "Datas Comemorativas", desc: "Lembrancinha, caixa e decoração impressa.", icon: PartyPopper, servico: "Datas comemorativas", img: datasAsset.url },
+  { titulo: "Placas QR Code", desc: "Display de balcão pra agendamento, cardápio e WhatsApp.", icon: QrCode, servico: "Placas QR Code", img: qrCodeAsset.url },
+  { titulo: "Kits Executivos", desc: "Caneta e porta-cartão em estojo, pronto pra presentear.", icon: Briefcase, servico: "Kits executivos", img: kitExecutivoAsset.url },
 ];
 
 
