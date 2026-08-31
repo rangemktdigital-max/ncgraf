@@ -6,6 +6,8 @@ import {
   FileText,
   Ribbon,
   PartyPopper,
+  QrCode,
+  Briefcase,
 } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { useOrcamento } from "./OrcamentoProvider";
@@ -19,6 +21,9 @@ import bannersAsset from "@/assets/prod-banners.webp.asset.json";
 import trofeusAsset from "@/assets/prod-trofeus.jpg.asset.json";
 import datasAsset from "@/assets/prod-datas.jpg.asset.json";
 import fitasAsset from "@/assets/prod-fitas.jpg.asset.json";
+import papelariaAsset from "@/assets/prod-papelaria.jpg.asset.json";
+import qrCodeAsset from "@/assets/prod-qrcode.jpg.asset.json";
+import kitExecutivoAsset from "@/assets/prod-kit-executivo.png.asset.json";
 
 const destaques = [
   {
