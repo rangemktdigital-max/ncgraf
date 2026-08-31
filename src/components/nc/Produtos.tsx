@@ -4,23 +4,27 @@ import {
   Flag,
   Trophy,
   FileText,
-  Tag,
   Ribbon,
   PartyPopper,
 } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { useOrcamento } from "./OrcamentoProvider";
 
-import brindes from "@/assets/foto-brindes.jpg";
 import kitR2 from "@/assets/foto-kit-r2.jpg";
 import agendaCaneca from "@/assets/foto-agenda-caneca.jpg";
-import fitasAsset from "@/assets/foto-fitas.jpg.asset.json";
+import brindesAsset from "@/assets/prod-brindes.jpg.asset.json";
+import cartaoAsset from "@/assets/prod-cartao.jpg.asset.json";
+import adesivosAsset from "@/assets/prod-adesivos.jpg.asset.json";
+import bannersAsset from "@/assets/prod-banners.webp.asset.json";
+import trofeusAsset from "@/assets/prod-trofeus.jpg.asset.json";
+import datasAsset from "@/assets/prod-datas.jpg.asset.json";
+import fitasAsset from "@/assets/prod-fitas.jpg.asset.json";
 
 const destaques = [
   {
     titulo: "Brindes Personalizados",
     desc: "Caneca, agenda, caneta e kit com a sua marca. Fecha bem como presente de cliente.",
-    img: brindes,
+    img: brindesAsset.url,
     servico: "Brindes personalizados",
   },
   {
@@ -44,14 +48,13 @@ const outros: {
   servico: string;
   img?: string;
 }[] = [
-  { titulo: "Cartões de Visita", desc: "Papel bom, laminação fosca ou brilho.", icon: CreditCard, servico: "Cartões de visita" },
-  { titulo: "Adesivos e Tags", desc: "Recortado, rótulo de embalagem e folder.", icon: Sticker, servico: "Adesivos e tags" },
-  { titulo: "Banners e Lonas", desc: "Grande formato pra evento e fachada.", icon: Flag, servico: "Banners e lonas" },
-  { titulo: "Troféus e Medalhas", desc: "Premiação de corrida, campeonato e festival.", icon: Trophy, servico: "Troféus e medalhas" },
+  { titulo: "Cartões de Visita", desc: "Papel bom, laminação fosca ou brilho.", icon: CreditCard, servico: "Cartões de visita", img: cartaoAsset.url },
+  { titulo: "Adesivos e Tags", desc: "Recortado, rótulo de embalagem e folder.", icon: Sticker, servico: "Adesivos e tags", img: adesivosAsset.url },
+  { titulo: "Banners e Lonas", desc: "Grande formato pra evento e fachada.", icon: Flag, servico: "Banners e lonas", img: bannersAsset.url },
+  { titulo: "Troféus e Medalhas", desc: "Premiação de corrida, campeonato e festival.", icon: Trophy, servico: "Troféus e medalhas", img: trofeusAsset.url },
   { titulo: "Papelaria", desc: "Bloco, receituário, envelope e timbrado.", icon: FileText, servico: "Papelaria" },
-  { titulo: "Etiqueta Escolar", desc: "Nome da criança no material e no uniforme.", icon: Tag, servico: "Etiqueta escolar" },
   { titulo: "Fitas Personalizadas", desc: "Cetim impresso em hot stamping dourado, com a sua marca.", icon: Ribbon, servico: "Fitas personalizadas", img: fitasAsset.url },
-  { titulo: "Datas Comemorativas", desc: "Lembrancinha, caixa e decoração impressa.", icon: PartyPopper, servico: "Datas comemorativas" },
+  { titulo: "Datas Comemorativas", desc: "Lembrancinha, caixa e decoração impressa.", icon: PartyPopper, servico: "Datas comemorativas", img: datasAsset.url },
 ];
 
 
@@ -65,7 +68,7 @@ export function Produtos() {
         O que a gente <span className="text-brand">imprime</span>
       </h2>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        Cartão de visita, banner de evento, etiqueta de escola, kit de premiação. Se dá pra
+        Cartão de visita, banner de evento, fita personalizada, kit de premiação. Se dá pra
         imprimir ou personalizar, provavelmente a gente faz. Produção é aqui mesmo e você
         retira no Centro ou combina a entrega em Ilhéus e Itabuna.
       </p>
