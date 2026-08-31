@@ -32,15 +32,11 @@ const depoimentos = [
 ];
 
 function iniciais(nome: string) {
-  const letras = nome
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .map((p) => p[0])
-    .filter((c): c is string => Boolean(c));
-  if (letras.length === 0) return "?";
-  if (letras.length === 1) return (letras[0] + letras[0]).toUpperCase();
-  return (letras[0] + letras[letras.length - 1]).toUpperCase();
+  const partes = nome.trim().split(/\s+/).filter((p) => p.length > 0);
+  if (partes.length === 0) return "?";
+  const a = partes[0][0] ?? "";
+  const b = partes.length === 1 ? a : (partes[partes.length - 1][0] ?? "");
+  return (a + b).toUpperCase();
 }
 
 export function ProvaSocial() {
