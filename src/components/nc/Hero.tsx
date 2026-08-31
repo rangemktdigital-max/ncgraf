@@ -31,7 +31,7 @@ const slides = [
   {
     url: carrossel5.url,
     alt: "Equipe da NC Copiadora atendendo pedidos no computador",
-    position: "25% 25%",
+    position: "15% 15%",
   },
 ];
 
