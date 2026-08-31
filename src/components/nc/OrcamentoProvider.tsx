@@ -34,7 +34,18 @@ type OrcamentoContextValue = {
   abrirOrcamento: (origem?: string, servicoInicial?: string) => void;
 };
 
-const OrcamentoContext = createContext<OrcamentoContextValue | null>(null);
+/**
+ * O contexto é guardado em `globalThis` para sobreviver a recargas parciais
+ * (HMR), quando o módulo pode ser avaliado duas vezes e gerar dois contextos
+ * distintos — provider em um, consumidor em outro.
+ */
+const GLOBAL_KEY = "__nc_orcamento_ctx__";
+const globalStore = globalThis as typeof globalThis & {
+  [GLOBAL_KEY]?: React.Context<OrcamentoContextValue | null>;
+};
+const OrcamentoContext =
+  globalStore[GLOBAL_KEY] ??
+  (globalStore[GLOBAL_KEY] = createContext<OrcamentoContextValue | null>(null));
 
 export function useOrcamento() {
   const ctx = useContext(OrcamentoContext);
