@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { carregarGTM } from "../lib/gtm";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -122,6 +123,11 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  // GTM carrega uma única vez após o app montar (client-side).
+  useEffect(() => {
+    carregarGTM();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

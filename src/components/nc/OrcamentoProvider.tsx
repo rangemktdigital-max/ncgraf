@@ -11,6 +11,7 @@ import { WhatsAppIcon } from "./WhatsAppIcon";
 import { cn } from "@/lib/utils";
 import { WHATSAPP_NUMBER } from "@/lib/nc";
 import { enviarLeadPlanilha } from "@/lib/orcamento.functions";
+import { pushDataLayer } from "@/lib/gtm";
 
 export const SERVICOS = [
   "Brindes personalizados",
@@ -60,6 +61,7 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
     setErros({});
     setErroEnvio(null);
     if (servicoInicial) setServicos((s) => (s.includes(servicoInicial) ? s : [...s, servicoInicial]));
+    pushDataLayer("abriu_forms", { origem: o });
     setAberto(true);
   }, []);
 
@@ -99,6 +101,8 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
         setEnviando(false);
         return;
       }
+      // Lead confirmado pela planilha: só aqui disparamos a conversão.
+      pushDataLayer("lead", { origem: payload.origem });
     } catch (err) {
       console.error("Falha ao registrar lead na planilha", err);
       setErroEnvio("Não conseguimos registrar seu pedido agora. Tente novamente em instantes.");
