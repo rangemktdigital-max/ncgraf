@@ -123,7 +123,7 @@ export function Produtos() {
         Itabuna.
       </p>
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {destaques.map((p) => (
           <article
             key={p.titulo}
@@ -135,7 +135,7 @@ export function Produtos() {
               loading="lazy"
               width={676}
               height={1200}
-              className="h-44 w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              className="h-40 w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
             />
             <div className="flex flex-1 flex-col p-5">
               <h3 className="text-xl">{p.titulo}</h3>
