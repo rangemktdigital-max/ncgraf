@@ -33,20 +33,6 @@ const produtos: Produto[] = [
     position: "50% 50%",
   },
   {
-    titulo: "Kits Corporativos",
-    desc: "Montamos o kit inteiro: sacola, embalagem e o que vai dentro, tudo com a sua identidade.",
-    img: kitR2,
-    servico: "Kits e sacolas",
-    position: "50% 60%",
-  },
-  {
-    titulo: "Agendas e Canecas com Nome",
-    desc: "Agenda 2026 com capa personalizada e caneca com nome, foto ou frase.",
-    img: agendaCaneca,
-    servico: "Agendas e canecas",
-    position: "50% 50%",
-  },
-  {
     titulo: "Cartões de Visita",
     desc: "Papel bom, laminação fosca ou brilho.",
     icon: CreditCard,
