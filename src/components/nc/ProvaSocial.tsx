@@ -38,8 +38,8 @@ function iniciais(nome: string) {
     if (c) letras.push(c);
   }
   if (letras.length === 0) return "?";
-  const a = letras[0];
-  const b = letras.length === 1 ? a : letras[letras.length - 1];
+  const a = letras[0] as string;
+  const b = (letras.length === 1 ? letras[0] : letras[letras.length - 1]) as string;
   return (a + b).toUpperCase();
 }
 
