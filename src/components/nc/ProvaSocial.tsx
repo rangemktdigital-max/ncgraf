@@ -32,10 +32,14 @@ const depoimentos = [
 ];
 
 function iniciais(nome: string) {
-  const partes = nome.trim().split(/\s+/).filter((p) => p.length > 0);
-  if (partes.length === 0) return "?";
-  const a = partes[0][0] ?? "";
-  const b = partes.length === 1 ? a : (partes[partes.length - 1][0] ?? "");
+  const letras: string[] = [];
+  for (const parte of nome.trim().split(/\s+/)) {
+    const c = parte[0];
+    if (c) letras.push(c);
+  }
+  if (letras.length === 0) return "?";
+  const a = letras[0];
+  const b = letras.length === 1 ? a : letras[letras.length - 1];
   return (a + b).toUpperCase();
 }
 
