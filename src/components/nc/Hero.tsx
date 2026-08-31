@@ -10,7 +10,7 @@ const slides = [
   {
     url: carrossel1.url,
     alt: "Balcão da NC Copiadora com canecas e agendas personalizadas",
-    position: "50% 80%",
+    position: "50% 95%",
   },
   {
     url: carrossel2.url,
