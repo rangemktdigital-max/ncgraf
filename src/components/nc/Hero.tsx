@@ -15,7 +15,7 @@ const slides = [
   {
     url: carrossel2.url,
     alt: "Fachada da NC Copiadora no Centro de Ilhéus",
-    position: "50% 80%",
+    position: "50% 50%",
   },
   {
     url: carrossel3.url,
