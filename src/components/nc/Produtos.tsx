@@ -33,11 +33,11 @@ const produtos: Produto[] = [
     position: "50% 50%",
   },
   {
-    titulo: "Kits e Sacolas Corporativas",
+    titulo: "Kits Corporativos",
     desc: "Montamos o kit inteiro: sacola, embalagem e o que vai dentro, tudo com a sua identidade.",
     img: kitR2,
     servico: "Kits e sacolas",
-    position: "50% 50%",
+    position: "50% 60%",
   },
   {
     titulo: "Agendas e Canecas com Nome",
@@ -52,7 +52,7 @@ const produtos: Produto[] = [
     icon: CreditCard,
     servico: "Cartões de visita",
     img: cartaoAsset.url,
-    position: "50% 50%",
+    position: "50% 40%",
   },
   {
     titulo: "Adesivos e Tags",
@@ -76,7 +76,7 @@ const produtos: Produto[] = [
     icon: Trophy,
     servico: "Troféus e medalhas",
     img: trofeusAsset.url,
-    position: "50% 50%",
+    position: "50% 60%",
   },
   {
     titulo: "Papelaria",
