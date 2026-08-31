@@ -5,7 +5,6 @@ import carrossel1 from "@/assets/carrossel-1.webp.asset.json";
 import carrossel2 from "@/assets/carrossel-2.webp.asset.json";
 import carrossel3 from "@/assets/carrossel-3.webp.asset.json";
 import carrossel4 from "@/assets/carrossel-4.webp.asset.json";
-import carrossel5 from "@/assets/carrossel-5.webp.asset.json";
 import { useOrcamento } from "./OrcamentoProvider";
 const slides = [
   {
