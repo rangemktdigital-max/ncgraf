@@ -87,6 +87,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
     ],
+    scripts: [
+      // Inicializa o dataLayer já no HTML servido (antes de qualquer hidratação),
+      // garantindo que window.dataLayer exista antes do script do GTM.
+      { children: "window.dataLayer = window.dataLayer || [];" },
+    ],
     links: [
       {
         rel: "stylesheet",
