@@ -82,7 +82,7 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
     const e: Erros = {};
     if (nome.trim().length < 2) e.nome = "Diga seu nome.";
     if (telefone.replace(/\D/g, "").length < 10) e.telefone = "Telefone com DDD, por favor.";
-    if (servicos.length === 0) e.servicos = "Escolha pelo menos um item.";
+    if (!servico) e.servico = "Escolha um serviço.";
     setErros(e);
     return Object.keys(e).length === 0;
   };
