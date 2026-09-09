@@ -14,19 +14,16 @@ import { enviarLeadPlanilha } from "@/lib/orcamento.functions";
 import { pushDataLayer } from "@/lib/gtm";
 
 export const SERVICOS = [
-  "Brindes personalizados",
-  "Kits e sacolas",
-  "Agendas e canecas",
-  "Cartões de visita",
-  "Adesivos e tags",
-  "Banners e lonas",
-  "Troféus e medalhas",
+  "Brindes Personalizados",
+  "Cartões de Visita",
+  "Adesivos e Tags",
+  "Banners e Lonas",
+  "Troféus e Medalhas",
   "Papelaria",
-  "Fitas personalizadas",
-  "Datas comemorativas",
+  "Fitas Personalizadas",
+  "Datas Comemorativas",
   "Placas QR Code",
-  "Kits executivos",
-  "Outro / não sei ainda",
+  "Kits Executivos",
 ] as const;
 
 type OrcamentoContextValue = {
