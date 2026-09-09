@@ -64,7 +64,7 @@ export const enviarLeadPlanilha = createServerFn({ method: "POST" })
     const corpo = JSON.stringify({
       nome: data.nome,
       telefone: data.telefone,
-      servicos: data.servicos.join(", "),
+      servicos: data.servico,
       mensagem: data.mensagem,
       origem: data.origem,
       enviadoEm: new Date().toISOString(),
