@@ -120,7 +120,7 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
       `Olá! Quero um orçamento.\n\n` +
       `Nome: ${payload.nome}\n` +
       `Telefone: ${payload.telefone}\n` +
-      `Serviços: ${servicos.join(", ")}\n` +
+      `Serviço: ${servico}\n` +
       (payload.mensagem ? `Detalhes: ${payload.mensagem}\n` : "") +
       `\n(via site · ${origem})`;
 
