@@ -50,7 +50,7 @@ export function useOrcamento() {
   return ctx;
 }
 
-type Erros = Partial<Record<"nome" | "telefone" | "servicos", string>>;
+type Erros = Partial<Record<"nome" | "telefone" | "servico", string>>;
 
 export function OrcamentoProvider({ children }: { children: ReactNode }) {
   const [aberto, setAberto] = useState(false);
