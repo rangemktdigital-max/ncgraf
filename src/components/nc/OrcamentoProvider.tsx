@@ -96,7 +96,7 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
     const payload = {
       nome: nome.trim(),
       telefone: telefone.trim(),
-      servicos,
+      servico,
       mensagem: mensagem.trim(),
       origem,
     };
