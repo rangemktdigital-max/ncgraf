@@ -8,7 +8,7 @@ import { z } from "zod";
 const leadSchema = z.object({
   nome: z.string().trim().min(2).max(100),
   telefone: z.string().trim().min(8).max(30),
-  servicos: z.array(z.string().trim().max(60)).min(1).max(20),
+  servico: z.string().trim().min(1).max(60),
   mensagem: z.string().trim().max(1000).default(""),
   origem: z.string().trim().max(60).default("site"),
 });
