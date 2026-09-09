@@ -14,19 +14,16 @@ import { enviarLeadPlanilha } from "@/lib/orcamento.functions";
 import { pushDataLayer } from "@/lib/gtm";
 
 export const SERVICOS = [
-  "Brindes personalizados",
-  "Kits e sacolas",
-  "Agendas e canecas",
-  "Cartões de visita",
-  "Adesivos e tags",
-  "Banners e lonas",
-  "Troféus e medalhas",
+  "Brindes Personalizados",
+  "Cartões de Visita",
+  "Adesivos e Tags",
+  "Banners e Lonas",
+  "Troféus e Medalhas",
   "Papelaria",
-  "Fitas personalizadas",
-  "Datas comemorativas",
+  "Fitas Personalizadas",
+  "Datas Comemorativas",
   "Placas QR Code",
-  "Kits executivos",
-  "Outro / não sei ainda",
+  "Kits Executivos",
 ] as const;
 
 type OrcamentoContextValue = {
@@ -53,14 +50,14 @@ export function useOrcamento() {
   return ctx;
 }
 
-type Erros = Partial<Record<"nome" | "telefone" | "servicos", string>>;
+type Erros = Partial<Record<"nome" | "telefone" | "servico", string>>;
 
 export function OrcamentoProvider({ children }: { children: ReactNode }) {
   const [aberto, setAberto] = useState(false);
   const [origem, setOrigem] = useState("site");
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
-  const [servicos, setServicos] = useState<string[]>([]);
+  const [servico, setServico] = useState<string>("");
   const [mensagem, setMensagem] = useState("");
   const [erros, setErros] = useState<Erros>({});
   const [enviando, setEnviando] = useState(false);
@@ -72,21 +69,20 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
     setOrigem(o);
     setErros({});
     setErroEnvio(null);
-    if (servicoInicial) setServicos((s) => (s.includes(servicoInicial) ? s : [...s, servicoInicial]));
+    if (servicoInicial) setServico(servicoInicial);
     pushDataLayer("abriu_forms", { origem: o });
     setAberto(true);
   }, []);
 
   const fechar = useCallback(() => setAberto(false), []);
 
-  const alternarServico = (s: string) =>
-    setServicos((atual) => (atual.includes(s) ? atual.filter((x) => x !== s) : [...atual, s]));
+  const selecionarServico = (s: string) => setServico(s);
 
   const validar = (): boolean => {
     const e: Erros = {};
     if (nome.trim().length < 2) e.nome = "Diga seu nome.";
     if (telefone.replace(/\D/g, "").length < 10) e.telefone = "Telefone com DDD, por favor.";
-    if (servicos.length === 0) e.servicos = "Escolha pelo menos um item.";
+    if (!servico) e.servico = "Escolha um serviço.";
     setErros(e);
     return Object.keys(e).length === 0;
   };
@@ -100,7 +96,7 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
     const payload = {
       nome: nome.trim(),
       telefone: telefone.trim(),
-      servicos,
+      servico,
       mensagem: mensagem.trim(),
       origem,
     };
@@ -124,7 +120,7 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
       `Olá! Quero um orçamento.\n\n` +
       `Nome: ${payload.nome}\n` +
       `Telefone: ${payload.telefone}\n` +
-      `Serviços: ${servicos.join(", ")}\n` +
+      `Serviço: ${servico}\n` +
       (payload.mensagem ? `Detalhes: ${payload.mensagem}\n` : "") +
       `\n(via site · ${origem})`;
 
@@ -217,29 +213,34 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
 
               <div>
                 <span className="text-sm font-semibold">O que você precisa?</span>
-                <div className="mt-2 flex flex-wrap gap-2">
+                <div className="mt-2 space-y-2">
                   {SERVICOS.map((s) => {
-                    const ativo = servicos.includes(s);
+                    const ativo = servico === s;
                     return (
-                      <button
+                      <label
                         key={s}
-                        type="button"
-                        aria-pressed={ativo}
-                        onClick={() => alternarServico(s)}
                         className={cn(
-                          "rounded-full border px-3.5 py-2 text-xs font-semibold transition-colors",
+                          "flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 transition-colors",
                           ativo
-                            ? "border-lime bg-lime text-lime-foreground"
+                            ? "border-lime bg-lime/10 text-foreground"
                             : "border-border bg-background text-muted-foreground hover:border-brand",
                         )}
                       >
-                        {s}
-                      </button>
+                        <input
+                          type="radio"
+                          name="nc-servico"
+                          value={s}
+                          checked={ativo}
+                          onChange={() => selecionarServico(s)}
+                          className="size-4 accent-lime"
+                        />
+                        <span className="text-sm font-semibold">{s}</span>
+                      </label>
                     );
                   })}
                 </div>
-                {erros.servicos && (
-                  <p className="mt-1 text-xs text-destructive">{erros.servicos}</p>
+                {erros.servico && (
+                  <p className="mt-1 text-xs text-destructive">{erros.servico}</p>
                 )}
               </div>
 
