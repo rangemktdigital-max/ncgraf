@@ -69,15 +69,14 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
     setOrigem(o);
     setErros({});
     setErroEnvio(null);
-    if (servicoInicial) setServicos((s) => (s.includes(servicoInicial) ? s : [...s, servicoInicial]));
+    if (servicoInicial) setServico(servicoInicial);
     pushDataLayer("abriu_forms", { origem: o });
     setAberto(true);
   }, []);
 
   const fechar = useCallback(() => setAberto(false), []);
 
-  const alternarServico = (s: string) =>
-    setServicos((atual) => (atual.includes(s) ? atual.filter((x) => x !== s) : [...atual, s]));
+  const selecionarServico = (s: string) => setServico(s);
 
   const validar = (): boolean => {
     const e: Erros = {};
