@@ -57,7 +57,7 @@ export function OrcamentoProvider({ children }: { children: ReactNode }) {
   const [origem, setOrigem] = useState("site");
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
-  const [servicos, setServicos] = useState<string[]>([]);
+  const [servico, setServico] = useState<string>("");
   const [mensagem, setMensagem] = useState("");
   const [erros, setErros] = useState<Erros>({});
   const [enviando, setEnviando] = useState(false);
