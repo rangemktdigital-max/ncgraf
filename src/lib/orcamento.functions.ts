@@ -7,6 +7,7 @@ import { z } from "zod";
  */
 const leadSchema = z.object({
   nome: z.string().trim().min(2).max(100),
+  email: z.string().trim().email().max(254).optional().default(""),
   telefone: z.string().trim().min(8).max(30),
   servico: z.string().trim().min(1).max(60),
   mensagem: z.string().trim().max(1000).default(""),
@@ -34,10 +35,8 @@ const MENSAGENS: Record<MotivoFalha, string> = {
   webhook_nao_configurado:
     "O registro de orçamentos ainda não está configurado. Fale com a gente pelo WhatsApp.",
   erro_http: "Não conseguimos registrar seu pedido agora. Tente novamente em instantes.",
-  resposta_invalida:
-    "Não conseguimos registrar seu pedido agora. Tente novamente em instantes.",
-  recusado_pelo_script:
-    "Não conseguimos registrar seu pedido agora. Tente novamente em instantes.",
+  resposta_invalida: "Não conseguimos registrar seu pedido agora. Tente novamente em instantes.",
+  recusado_pelo_script: "Não conseguimos registrar seu pedido agora. Tente novamente em instantes.",
   falha_rede: "Sem conexão com nosso registro. Verifique a internet e tente de novo.",
 };
 
@@ -63,6 +62,7 @@ export const enviarLeadPlanilha = createServerFn({ method: "POST" })
 
     const corpo = JSON.stringify({
       nome: data.nome,
+      email: data.email,
       telefone: data.telefone,
       servicos: data.servico,
       mensagem: data.mensagem,
